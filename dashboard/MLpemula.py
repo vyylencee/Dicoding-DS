@@ -4,12 +4,12 @@ import seaborn as sns
 import streamlit as st
 from babel.numbers import format_currency
 
-cust = pd.read_csv('data/cust.csv')
-geographic = pd.read_csv('data/geographic.csv')
-orders = pd.read_csv('data/orders.csv')
-order_items = pd.read_csv('data/order_items.csv')
-product = pd.read_csv('data/product.csv')
-payment = pd.read_csv('data/payment.csv')
+cust = pd.read_csv('../data/cust.csv')
+geographic = pd.read_csv('../data/geographic.csv')
+orders = pd.read_csv('../data/orders.csv')
+order_items = pd.read_csv('../data/order_items.csv')
+product = pd.read_csv('../data/product.csv')
+payment = pd.read_csv('../data/payment.csv')
 
 st.title('Data Science Project :sparkles:')
 st.write('Proyek Analisis Data - Penggunaan E-Commerce')
