@@ -1,0 +1,28 @@
+customer_state,customer_id,jumlah_pelanggan
+AC,81,Pelanggan dibawah 500
+AL,413,Pelanggan dibawah 500
+AM,148,Pelanggan dibawah 500
+AP,68,Pelanggan dibawah 500
+BA,3380,Pelanggan melebihi 1000
+CE,1336,Pelanggan melebihi 1000
+DF,2140,Pelanggan melebihi 1000
+ES,2033,Pelanggan melebihi 1000
+GO,2020,Pelanggan melebihi 1000
+MA,747,Pelanggan di antara 500-1000
+MG,11635,Pelanggan melebihi 1000
+MS,715,Pelanggan di antara 500-1000
+MT,907,Pelanggan di antara 500-1000
+PA,975,Pelanggan di antara 500-1000
+PB,536,Pelanggan di antara 500-1000
+PE,1652,Pelanggan melebihi 1000
+PI,495,Pelanggan dibawah 500
+PR,5045,Pelanggan melebihi 1000
+RJ,12852,Pelanggan melebihi 1000
+RN,485,Pelanggan dibawah 500
+RO,253,Pelanggan dibawah 500
+RR,46,Pelanggan dibawah 500
+RS,5466,Pelanggan melebihi 1000
+SC,3637,Pelanggan melebihi 1000
+SE,350,Pelanggan dibawah 500
+SP,41746,Pelanggan melebihi 1000
+TO,280,Pelanggan dibawah 500
