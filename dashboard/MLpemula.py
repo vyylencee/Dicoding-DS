@@ -3,10 +3,10 @@ import matplotlib.pyplot as plt
 import streamlit as st
 from babel.numbers import format_currency
 
-cust = pd.read_csv('../data/cust.csv')
-orders = pd.read_csv('../data/orders.csv')
-order_items = pd.read_csv('../data/order_items.csv')
-product = pd.read_csv('../data/product.csv')
+cust = pd.read_csv('data/cust.csv')
+orders = pd.read_csv('data/orders.csv')
+order_items = pd.read_csv('data/order_items.csv')
+product = pd.read_csv('data/product.csv')
 
 st.title('Data Science Project :sparkles:')
 st.write('Proyek Analisis Data - Penggunaan E-Commerce')
