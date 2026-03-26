@@ -3,13 +3,28 @@ import matplotlib.pyplot as plt
 import streamlit as st
 from babel.numbers import format_currency
 
-cust = pd.read_csv('data/cust.csv')
-orders = pd.read_csv('data/orders.csv')
-order_items = pd.read_csv('data/order_items.csv')
-product = pd.read_csv('data/product.csv')
+cust = pd.read_csv('../data/cust.csv')
+orders = pd.read_csv('../data/orders.csv')
+order_items = pd.read_csv('../data/order_items.csv')
+product = pd.read_csv('../data/product.csv')
 
 st.title('Data Science Project :sparkles:')
 st.write('Proyek Analisis Data - Penggunaan E-Commerce')
+
+min_date = orders["order_purchase_timestamp"].min()
+max_date = orders["order_purchase_timestamp"].max()
+ 
+with st.sidebar:
+    start_date, end_date = st.date_input(
+        label='Rentang Waktu',min_value=min_date,
+        max_value=max_date,
+        value=[min_date, max_date]
+    )
+
+order = orders[
+    (orders['order_purchase_timestamp'] >= str(start_date)) &
+    (orders['order_purchase_timestamp'] <= str(end_date))
+]
 
 col1, col2 = st.columns(2)
 
@@ -17,8 +32,8 @@ with col1:
     st.header('Top 5 Kota dengan Penjualan Terbanyak')
     the_most_order_city = pd.merge(
         left=cust,
-        right=orders,
-        how='left',
+        right=order,
+        how='inner',
         left_on='customer_id',
         right_on='customer_id'
     )
@@ -38,12 +53,16 @@ with col1:
 
     st.pyplot(fig)
 
+ordered_items = order_items[
+    order_items['order_id'].isin(order['order_id'])
+]
+
 with col2:
     st.header('Top 3 Kategori Produk dengan Penjualan Terbanyak')
     top_product = pd.merge(
         left=product,
-        right=order_items,
-        how='left',
+        right=ordered_items,
+        how='inner',
         left_on='product_id',
         right_on='product_id'
     )
