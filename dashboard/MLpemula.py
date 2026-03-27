@@ -3,23 +3,39 @@ import matplotlib.pyplot as plt
 import streamlit as st
 from babel.numbers import format_currency
 
-cust = pd.read_csv('data/cust.csv')
+# Khusus untuk deploy streamlit
+cust = pd.read_csv('data/cust.csv') 
 orders = pd.read_csv('data/orders.csv')
 order_items = pd.read_csv('data/order_items.csv')
 product = pd.read_csv('data/product.csv')
 
+# Halo kakak reviewer, setelah aku baca email feedback mengenai project ini, ternyata diperiksa dari link develop streamlit dan localhost
+# Untuk line 6-9 ada perbedaan jika kita run di streamlit
+
+# Berikut code yang digunakan jika kita run di local
+# cust = pd.read_csv('../data/cust.csv') 
+# orders = pd.read_csv('../data/orders.csv')
+# order_items = pd.read_csv('../data/order_items.csv')
+# product = pd.read_csv('../data/product.csv')
+
 st.title('Data Science Project :sparkles:')
 st.write('Proyek Analisis Data - Penggunaan E-Commerce')
+
+orders['order_purchase_timestamp'] = pd.to_datetime(orders['order_purchase_timestamp'])
 
 min_date = orders["order_purchase_timestamp"].min()
 max_date = orders["order_purchase_timestamp"].max()
  
 with st.sidebar:
-    start_date, end_date = st.date_input(
-        label='Rentang Waktu',min_value=min_date,
-        max_value=max_date,
-        value=[min_date, max_date]
-    )
+    try :
+        start_date, end_date = st.date_input(
+            label='Rentang Waktu',min_value=min_date,
+            max_value=max_date,
+            value=[min_date, max_date]
+        )
+    except ValueError :
+        st.toast('Silahkan pilih tanggal akhir dengan benar.')
+        start_date, end_date = min_date, max_date 
 
 order = orders[
     (orders['order_purchase_timestamp'] >= str(start_date)) &
